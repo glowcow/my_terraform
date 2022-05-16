@@ -42,48 +42,56 @@ resource "aws_security_group" "chr-sg" {
   vpc_id = aws_vpc.tf-main.id
   name = "tf-chr-sg"
   ingress {
+    description = "Allow SSH to CHR"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
+    description = "Allow WinBox to CHR"
     from_port   = 8291
     to_port     = 8291
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
+    description = "Allow IPsec/IKE to CHR"
     from_port   = 500
     to_port     = 500
     protocol    = "udp"
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
+    description = "Allow IPsec/IKE to CHR"
     from_port   = 4500
     to_port     = 4500
     protocol    = "udp"
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
+    description = "Allow L2TP VPN to CHR"
     from_port   = 1701
     to_port     = 1701
     protocol    = "udp"
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
+    description = "Allow ICMP echo to CHR"
     from_port   = 8
     to_port     = 0
     protocol    = "icmp"
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
+    description = "Allow all from VPC to CHR"
     from_port   = 0
     to_port     = 0
     protocol    = -1
     cidr_blocks = [aws_subnet.private.cidr_block]
   }
   egress {
+    description = "Allow all out from CHR"
     from_port   = 0
     to_port     = 0
     protocol    = -1
