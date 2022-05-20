@@ -5,6 +5,13 @@ terraform {
       version = "~> 2.0"
     }
   }
+  backend "s3" {
+    bucket         = "asediuk-tfstate-bucket"
+    dynamodb_table = "asediuk-tfstate-lock"
+    key            = "do_tf_state/chr.tfstate"
+    region         = "eu-west-2"
+    encrypt        = "true"
+  }
 }
 
 provider "digitalocean" {

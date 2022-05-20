@@ -1,5 +1,4 @@
 terraform {
-required_version = ">= 0.14.0"
   required_providers {
     openstack = {
       source  = "terraform-provider-openstack/openstack"
@@ -9,6 +8,13 @@ required_version = ">= 0.14.0"
 #      source  = "selectel/selectel"
 #      version = "~> 3.6.2"
 #   }
+  }
+  backend "s3" {
+    bucket         = "asediuk-tfstate-bucket"
+    dynamodb_table = "asediuk-tfstate-lock"
+    key            = "openstack_tf_state/selectel-linux.tfstate"
+    region         = "eu-west-2"
+    encrypt        = "true"
   }
 }
 

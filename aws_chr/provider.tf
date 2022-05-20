@@ -5,6 +5,13 @@ terraform {
       version = "~> 4.0"
     }
   }
+  backend "s3" {
+    bucket         = "asediuk-tfstate-bucket"
+    dynamodb_table = "asediuk-tfstate-lock"
+    key            = "aws_tf_state/aws_chr.tfstate"
+    region         = "eu-west-2"
+    encrypt        = "true"
+  }
 }
 
 provider "aws" {
