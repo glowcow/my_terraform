@@ -14,9 +14,9 @@ variable "instance_type" {
   default     = "t2.micro"
 }
 variable "ami_image" {
-  description = "AMI images id eu-west-2 Debian 11"
+  description = "AMI images id Ubuntu 22.04 (eu-west-2)"
   type        = string
-  default     = "ami-048df70cfbd1df3a9"
+  default     = "ami-0bde1ad52d89b8d1a"
 }
 variable "ec2_count" {
   description = "Count of the AWS EC2"
