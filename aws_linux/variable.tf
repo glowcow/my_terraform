@@ -1,7 +1,7 @@
 variable "pvt_key" {
-  description = "SSH private key to access droplet"
+  description = "SSH private key to access EC2"
   type        = string
-  default     = "ssh/key/do_key"
+  default     = "~/.ssh/id_ed25519"
 }
 variable "ec2_name" {
   description = "Name of the AWS EC2"

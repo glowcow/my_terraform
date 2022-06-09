@@ -1,6 +1,6 @@
 resource "aws_key_pair" "tf" {
   key_name   = "tf-key"
-  public_key = file("~/key/do_key.pub")
+  public_key = file("~/.ssh/id_ed25519.pub")
 }
 
 resource "aws_instance" "linux-aws" {
