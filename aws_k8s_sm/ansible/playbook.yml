@@ -1,0 +1,7 @@
+---
+- name: AWS Linux configuration
+  hosts: srv
+  become: true
+  roles:
+    - docker
+    - gitlab-runner
