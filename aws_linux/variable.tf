@@ -18,6 +18,11 @@ variable "ami_image" {
   type        = string
   default     = "ami-0bde1ad52d89b8d1a"
 }
+variable "ansible_user" {
+  description = "Username for ansible inventory"
+  type        = string
+  default     = "ubuntu"
+}
 variable "ec2_count" {
   description = "Count of the AWS EC2"
   type        = number

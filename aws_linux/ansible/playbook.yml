@@ -3,5 +3,9 @@
   hosts: srv
   become: true
   roles:
-    - docker
-    - gitlab-runner
+    - role: docker
+      tags: docker
+    - role: gitlab-runner
+      tags: gitlab-runner
+    - role: npm
+      tags: npm
