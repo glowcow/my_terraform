@@ -19,14 +19,19 @@ variable "worker_instance_type" {
   default     = "t2.medium"
 }
 variable "ami_image" {
-  description = "AMI images id Debian 11 (eu-west-2)"
+  description = "AMI images id Ubuntu 20.04 (eu-west-2)"
   type        = string
-  default     = "ami-048df70cfbd1df3a9"
+  default     = "ami-01dd16067120e7827"
+}
+variable "def_user" {
+  description = "Default username of Ubuntu 20.04"
+  type        = string
+  default     = "ubuntu"
 }
 variable "worker_ec2_count" {
   description = "Count of the AWS EC2"
   type        = number
-  default     = 3
+  default     = 2
 }
 variable "master_ec2_count" {
   description = "Count of the AWS EC2"

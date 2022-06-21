@@ -1,7 +1,14 @@
 ---
-- name: AWS Linux configuration
-  hosts: srv
+- name: AWS self-managed k8s cluster configuration
+  hosts: all
   become: true
   roles:
-    - docker
-    - gitlab-runner
+    - role: node-prepare
+      tags:
+        - node-prepare
+    - role: cluster-setup
+      tags:
+        - cluster-setup
+    - role: node-add
+      tags:
+        - node-add

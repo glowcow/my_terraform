@@ -1,7 +1,0 @@
-- name: Debian tasks
-  include_tasks: "debian.yml"
-  when: ansible_os_family == "Debian"
-
-- name: RHEL and CentOS tasks
-  include_tasks: "rhel.yml"
-  when: ansible_os_family == "RedHat"

@@ -18,6 +18,11 @@ output "master_ipv4_address_private" {
   value       = join(", ", aws_instance.k8s-master-aws.*.private_ip)
 }
 
+output "bastion_ipv4_address_public" {
+  description = "Ansible bastion public IPv4"
+  value       = aws_instance.k8s-master-aws.0.public_ip
+}
+
 output "worker_ipv4_address_private" {
   description = "private IPv4 addresses assigned to the EC2, if applicable"
   value       = join(", ", aws_instance.k8s-worker-aws.*.private_ip)

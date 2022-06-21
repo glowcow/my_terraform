@@ -27,7 +27,6 @@ resource "aws_main_route_table_association" "rta" {
   route_table_id = aws_route_table.tf_rt.id
 }
 
-
 resource "aws_subnet" "private" {
   vpc_id                  = aws_vpc.tf-main.id
   cidr_block              = var.aws_prv_subnet
