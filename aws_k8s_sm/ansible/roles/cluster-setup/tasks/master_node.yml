@@ -1,0 +1,23 @@
+- name: install kube packages on master
+  ansible.builtin.apt:
+    pkg:
+    - kubelet
+    - kubeadm
+    - kubectl
+    update_cache: yes
+    state: latest
+
+- name: permit kube in iptables on master (1/2)
+  ansible.builtin.iptables:
+    chain: INPUT
+    protocol: tcp
+    destination_ports:
+      - "6443"
+      - "2379:2380"
+      - "10250:10252"
+    jump: ACCEPT
+    comment: "K8s master node rules"
+
+- name: permit kube in iptables on master (2/2)
+  ansible.builtin.shell: |
+    iptables-save > /etc/iptables/rules.v4
