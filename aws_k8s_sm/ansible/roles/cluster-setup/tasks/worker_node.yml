@@ -1,10 +1,9 @@
 - name: install kube packages on worker
   ansible.builtin.apt:
     pkg:
-    - kubelet
-    - kubeadm
+    - kubelet={{cluster_version}}
+    - kubeadm={{cluster_version}}
     update_cache: yes
-    state: latest
 
 - name: permit kube in iptables on worker (1/1)
   ansible.builtin.iptables:
@@ -19,3 +18,7 @@
 - name: permit kube in iptables on worker (2/2)
   ansible.builtin.shell: |
     iptables-save > /etc/iptables/rules.v4
+
+- name: join worker to cluster
+  ansible.builtin.shell: |
+    {{hostvars['k8s-aws-master0']['kubeadm_join']}}

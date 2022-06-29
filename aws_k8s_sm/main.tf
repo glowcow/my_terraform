@@ -12,7 +12,7 @@ resource "aws_instance" "k8s-master-aws" {
   key_name = aws_key_pair.tf.key_name
   vpc_security_group_ids = [aws_security_group.k8s-master-sg.id]
   tags = {
-      Name = "${var.ec2_name}-${var.aws_region}-master${count.index}",
+      Name = "${var.ec2_name}-master${count.index}",
     }
   connection {
       type        = "ssh"
@@ -43,6 +43,6 @@ resource "aws_instance" "k8s-worker-aws" {
   key_name = aws_key_pair.tf.key_name
   vpc_security_group_ids = [aws_security_group.k8s-worker-sg.id]
   tags = {
-      Name = "${var.ec2_name}-${var.aws_region}-worker${count.index}",
+      Name = "${var.ec2_name}-worker${count.index}",
     }
 }

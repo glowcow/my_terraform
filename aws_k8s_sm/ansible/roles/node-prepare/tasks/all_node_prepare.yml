@@ -80,12 +80,11 @@
 - name: install Docker (4/6)
   ansible.builtin.apt:
     pkg:
-    - docker-ce
-    - docker-ce-cli
+    - docker-ce={{docker_version}}
+    - docker-ce-cli={{docker_version}}
     - containerd.io
     - docker-compose-plugin
     update_cache: yes
-    state: latest
 
 - name: install Docker (5/6)
   ansible.builtin.template:
