@@ -55,7 +55,7 @@
 
 - name: install nginx ingress (2/3)
   ansible.builtin.template:
-    src: ./templates/helm-nginx-values.yaml
+    src: ./templates/helm-nginx-values.j2
     dest: /tmp/helm-nginx-values.yaml
     owner: root
     group: root
