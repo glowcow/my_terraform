@@ -99,7 +99,20 @@
     state: restarted
     name: docker
 
-- name: adding Google cloud repo
+- name: adding google cloud repo
   ansible.builtin.shell: |
     sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
     echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+#- name: rebooting all nodes for applying updates
+#  ansible.builtin.shell: |
+#    sleep 5 && shutdown -r now
+#  async: 1
+#  poll: 0
+#
+#- name: waiting for the boot
+#  wait_for_connection:
+#    connect_timeout: 10
+#    sleep: 5
+#    delay: 5
+#    timeout: 300

@@ -75,3 +75,7 @@
 - name: set kubeadm_join var
   ansible.builtin.set_fact:
     kubeadm_join: "{{kubeadm_join_out.stdout}}"
+
+- name: disabling updates for cluster core components
+  ansible.builtin.shell: |
+    apt-mark hold docker-ce docker-ce-cli kubeadm kubectl kubelet
