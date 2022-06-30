@@ -27,9 +27,9 @@ resource "aws_main_route_table_association" "rta" {
   route_table_id = aws_route_table.tf_rt.id
 }
 
-resource "aws_subnet" "private" {
+resource "aws_subnet" "public" {
   vpc_id                  = aws_vpc.tf-main.id
-  cidr_block              = var.aws_prv_subnet
+  cidr_block              = var.aws_vpc_subnet
   availability_zone       = var.availability_zones
   map_public_ip_on_launch = true
   tags = {
@@ -47,14 +47,8 @@ resource "aws_security_group" "k8s-master-sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  ingress {
-    from_port   = 443
-    to_port     = 443
+    from_port   = 31080
+    to_port     = 31080
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -62,7 +56,7 @@ resource "aws_security_group" "k8s-master-sg" {
     from_port   = 0
     to_port     = 0
     protocol    = -1
-    cidr_blocks = [aws_subnet.private.cidr_block]
+    cidr_blocks = [aws_subnet.public.cidr_block]
   }
   egress {
     from_port   = 0
@@ -79,7 +73,7 @@ resource "aws_security_group" "k8s-worker-sg" {
     from_port   = 0
     to_port     = 0
     protocol    = -1
-    cidr_blocks = [aws_subnet.private.cidr_block]
+    cidr_blocks = [aws_subnet.public.cidr_block]
   }
   egress {
     from_port   = 0

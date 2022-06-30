@@ -19,3 +19,4 @@
     - docker_version: "5:19.03.15~3-0~ubuntu-focal"
     - pod_net: "10.100.0.0/16"
     - svc_net: "10.200.1.0/24"
+    - nginx_ingress: true

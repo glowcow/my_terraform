@@ -8,7 +8,7 @@ resource "aws_instance" "k8s-master-aws" {
   ami = var.ami_image
   instance_type = var.master_instance_type
   associate_public_ip_address = true
-  subnet_id = aws_subnet.private.id
+  subnet_id = aws_subnet.public.id
   key_name = aws_key_pair.tf.key_name
   vpc_security_group_ids = [aws_security_group.k8s-master-sg.id]
   tags = {
@@ -39,7 +39,7 @@ resource "aws_instance" "k8s-worker-aws" {
   ami = var.ami_image
   instance_type = var.worker_instance_type
   associate_public_ip_address = true
-  subnet_id = aws_subnet.private.id
+  subnet_id = aws_subnet.public.id
   key_name = aws_key_pair.tf.key_name
   vpc_security_group_ids = [aws_security_group.k8s-worker-sg.id]
   tags = {

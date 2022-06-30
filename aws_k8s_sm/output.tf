@@ -23,15 +23,15 @@ output "bastion_ipv4_address_public" {
   value       = aws_instance.k8s-master-aws.0.public_ip
 }
 
+output "ingress_dns_name" {
+  description = "Ingress DNS name"
+  value       = aws_instance.k8s-master-aws.0.public_dns
+}
+
 output "worker_ipv4_address_private" {
   description = "private IPv4 addresses assigned to the EC2, if applicable"
   value       = join(", ", aws_instance.k8s-worker-aws.*.private_ip)
 }
-
-#output "name" {
-#  description = "names of EC2"
-#  value       = join(", ", [for i in aws_instance.linux-aws.*.tags : i.Name])
-#}
 
 output "region" {
   description = "regions of EC2"

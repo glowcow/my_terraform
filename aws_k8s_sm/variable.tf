@@ -46,7 +46,7 @@ variable "aws_region" {
 variable "aws_prv_subnet" {
   description = "AWS region"
   type        = string
-  default     = "172.16.16.0/25"
+  default     = "172.20.20.0/28"
 }
 variable "aws_vpc_subnet" {
   description = "AWS region"
