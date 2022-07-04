@@ -18,32 +18,3 @@ resource "digitalocean_droplet" "chr-do" {
   vpc_uuid = digitalocean_vpc.vpc.id
   ssh_keys = [data.digitalocean_ssh_key.terraform.id]
 }
-
-resource "digitalocean_firewall" "chr-do-fw" {
-  name = "${var.do_region}-fw"
-  droplet_ids = [digitalocean_droplet.chr-do.id]
-  inbound_rule {
-    protocol         = "tcp"
-    port_range       = "22"
-    source_addresses = ["0.0.0.0/0"]
-  }
-  inbound_rule {
-    protocol         = "tcp"
-    port_range       = "8291"
-    source_addresses = ["0.0.0.0/0"]
-  }
-  inbound_rule {
-    protocol         = "icmp"
-    source_addresses = ["0.0.0.0/0"]
-  }
-  outbound_rule {
-    protocol              = "tcp"
-    port_range            = "1-65535"
-    destination_addresses = ["0.0.0.0/0"]
-  }
-  outbound_rule {
-    protocol              = "udp"
-    port_range            = "1-65535"
-    destination_addresses = ["0.0.0.0/0"]
-  }
-}

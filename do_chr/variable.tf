@@ -15,7 +15,7 @@ variable "drplt_name" {
 variable "drplt_size" {
   description = "CPU and RAM of the DO droplet"
   type        = string
-  default     = "s-1vcpu-1gb"
+  default     = "s-1vcpu-512mb-10gb"
 }
 variable "chr_ver" {
   description = "Image version of mikrotik CHR"
@@ -25,11 +25,11 @@ variable "chr_ver" {
 variable "vpc_cidr" {
   description = "VPC network"
   type        = string
-  default     = "10.10.10.0/24"
+  default     = "10.10.10.0/28"
 }
 variable "do_region" {
   description = "DO region"
   type        = string
-  default     = "fra1"
+  default     = "lon1"
 }
 
