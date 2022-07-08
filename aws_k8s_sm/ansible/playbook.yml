@@ -14,6 +14,11 @@
     - role: node-add
       tags:
         - node-add
+    - role: post-tasks
+      tags:
+        - post-tasks
+        - cluster-setup
+        - node-add
   vars:
     - cluster_version: "1.19.16-00"
     - docker_version: "5:19.03.15~3-0~ubuntu-focal"
